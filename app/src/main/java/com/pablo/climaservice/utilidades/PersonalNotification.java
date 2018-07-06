@@ -3,7 +3,10 @@ package com.pablo.climaservice.utilidades;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
+import android.net.Uri;
 import android.support.v4.app.NotificationCompat;
+
+import com.pablo.climaservice.R;
 
 public class PersonalNotification {
 
@@ -15,6 +18,12 @@ public class PersonalNotification {
     long vibrate[]={0,100,100}; //patron vibracion
     private PendingIntent pendingIntent;
 
+    public PersonalNotification(Context context, String title, String message){
+        this.ctx = context;
+        manager = (NotificationManager) ctx.getSystemService(Context.NOTIFICATION_SERVICE);
+        this.titulo = title;
+        this.mensaje = message;
+    }
     public PersonalNotification(Context context, String title, String message, PendingIntent pendingIntent){
         this.ctx = context;
         manager = (NotificationManager) ctx.getSystemService(Context.NOTIFICATION_SERVICE);
