@@ -19,7 +19,7 @@ public class BootReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         Toast.makeText(context, "From Broadcast", Toast.LENGTH_SHORT).show();
 
-        if(Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
+        if(Build.VERSION.SDK_INT <= Build.VERSION_CODES.LOLLIPOP) {
 
             Intent newIntent = new Intent(context, Clima.class);
             PendingIntent pendingIntent = PendingIntent.getService(context, 1, newIntent,

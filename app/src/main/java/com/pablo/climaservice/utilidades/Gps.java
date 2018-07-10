@@ -19,7 +19,7 @@ import com.google.android.gms.location.LocationServices;
 public class Gps implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
     private Context ctx;
-    private final String TAG = "Gps util";
+    private final String TAG = Gps.class.getSimpleName();
 
     private Location location;
     private GoogleApiClient apiClient;
@@ -46,16 +46,13 @@ public class Gps implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient
             if (location.getProvider() != null) {
                 latitud = location.getLatitude();
                 longitud = location.getLongitude();
-                Toast.makeText(ctx, "latitud: "+latitud +" longitud: "+longitud, Toast.LENGTH_LONG).show();
+                Toast.makeText(ctx, "latitud: "+latitud +" longitud: "+longitud, Toast.LENGTH_LONG).show();// llega perfecto
             } else {
-                //Toast.makeText(ctx, "Ubicacion no activa", Toast.LENGTH_LONG).show();
                 Log.e(TAG, "Ubicacion no activa");
                 return;
             }
         }catch (NullPointerException e){
             Log.e(TAG, "El movil posee desactivada la ubicacion");
-            //Toast.makeText(ctx, "El movil posee desactivada la ubicacion", Toast.LENGTH_LONG).show();
-
         }
     }
 
