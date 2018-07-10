@@ -21,13 +21,21 @@
             </intent-filter>
         </activity>
 
-        <receiver android:name=".servicios.Programador"></receiver>
-
         <service
             android:name=".servicios.Clima"
             android:enabled="true"
-            android:exported="false"></service>
+            android:exported="false">
+        </service>
 
+        <receiver
+            android:name=".servicios.BootReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <!--<action android:name="android.intent.action.BOOT_COMPLETED" />-->
+                <action android:name="android.intent.action.ACTION_POWER_CONNECTED" /> <!-- only for test -->
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

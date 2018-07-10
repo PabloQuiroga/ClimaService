@@ -37,12 +37,16 @@ public class Gps implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient
 
     }
 
+    public double getLatitud() {
+        return latitud;
+    }
+
     private void updateCoords(){
         try {
             if (location.getProvider() != null) {
                 latitud = location.getLatitude();
                 longitud = location.getLongitude();
-                //Toast.makeText(ctx, "latitud: "+latitud +" longitud: "+longitud, Toast.LENGTH_LONG).show();
+                Toast.makeText(ctx, "latitud: "+latitud +" longitud: "+longitud, Toast.LENGTH_LONG).show();
             } else {
                 //Toast.makeText(ctx, "Ubicacion no activa", Toast.LENGTH_LONG).show();
                 Log.e(TAG, "Ubicacion no activa");
