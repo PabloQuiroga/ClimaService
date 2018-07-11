@@ -8,6 +8,8 @@ import android.content.Intent;
 import android.os.Build;
 import android.widget.Toast;
 
+import com.pablo.climaservice.utilidades.PersonalNotification;
+
 public class BootReceiver extends BroadcastReceiver {
 
     private final int intervalDay = 1000*60*60*24; //24hs
@@ -17,19 +19,19 @@ public class BootReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        Toast.makeText(context, "From Broadcast", Toast.LENGTH_SHORT).show();
 
-        if(Build.VERSION.SDK_INT <= Build.VERSION_CODES.LOLLIPOP) {
+        if(Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
 
-            Intent newIntent = new Intent(context, Clima.class);
+            Intent newIntent = new Intent(context, ClimaService.class);
             PendingIntent pendingIntent = PendingIntent.getService(context, 1, newIntent,
                     PendingIntent.FLAG_CANCEL_CURRENT);
 
             AlarmManager manager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-            manager.setInexactRepeating(AlarmManager.RTC, System.currentTimeMillis(), ALARMA_MS,
+            manager.setInexactRepeating(AlarmManager.RTC, System.currentTimeMillis(), intervalService,
                     pendingIntent);
         }else{
-            //TODO manejar el JobService aqui
+            PersonalNotification notificacion = new PersonalNotification(context, "Notificacion", "API 21 o superior");
+            notificacion.lanzar();
         }
     }
 }
