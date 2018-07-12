@@ -26,7 +26,7 @@ public class PersonalNotification {
     }
     public PersonalNotification(Context context, String title, String message, PendingIntent pendingIntent){
         this.ctx = context;
-        manager = (NotificationManager) ctx.getSystemService(Context.NOTIFICATION_SERVICE);
+        manager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         this.titulo = title;
         this.mensaje = message;
         this.pendingIntent = pendingIntent;

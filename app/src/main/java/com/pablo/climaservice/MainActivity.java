@@ -46,9 +46,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
                         200);
             }
-        }else{
-            Log.e(TAG, "permisos concedidos?");
-
         }
     }
 
